@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="WhiteText" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ShowDetailsWallpaperCard" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">@dimen/zero</item>
+        <item name="cornerSizeTopLeft">@dimen/zero</item>
+        <item name="cornerSizeBottomRight">@dimen/show_details_corner_radius</item>
+        <item name="cornerSizeBottomLeft">@dimen/show_details_corner_radius</item>
+        <item name="cardPreventCornerOverlap">false</item>
+    </style>
+
+    <style name="ShowDetailsWallpaperImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">@dimen/zero</item>
+        <item name="cornerSizeTopLeft">@dimen/zero</item>
+        <item name="cornerSizeBottomRight">@dimen/show_details_corner_radius</item>
+        <item name="cornerSizeBottomLeft">@dimen/show_details_corner_radius</item>
+    </style>
+
+    <style name="Label" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/text_label</item>
+        <item name="android:capitalize">characters</item>
+    </style>
+
+    <style name="Label.Hint" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/text_label</item>
+    </style>
+
+    <style name="Content" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+</resources>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/home_item_size"
+    android:layout_margin="@dimen/medium_spacing"
+    app:cardElevation="@dimen/home_item_elevation"
+    app:cardCornerRadius="@dimen/home_item_corner_radius"
+    app:cardPreventCornerOverlap="true"
+    tools:layout_height="@dimen/home_item_size"
+    tools:layout_width="@dimen/home_item_size">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivWallpaper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/home_wallpaper"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:scaleType="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:background="@android:color/darker_gray"/>
+
+        <ImageView
+            android:id="@+id/ivShadow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/home_wallpaper"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:alpha="0.5"
+            android:background="@color/alpha_shadow"/>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/tvSubTitle"
+            app:layout_constraintStart_toStartOf="@id/tvSubTitle"
+            app:layout_constraintEnd_toEndOf="@id/tvSubTitle"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/tvSubTitle"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/white"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/medium_spacing"
+            android:layout_marginStart="@dimen/medium_spacing"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Sub-Title" />
+
+        <ImageView
+            android:id="@+id/ivRating"
+            android:layout_width="@dimen/icon_small"
+            android:layout_height="@dimen/icon_small"
+            android:layout_margin="@dimen/small_spacing"
+            android:contentDescription="@string/home_item_rating"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_rating"/>
+
+        <TextView
+            android:id="@+id/tvRating"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/white"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_spacing"
+            app:layout_constraintEnd_toStartOf="@id/ivRating"
+            app:layout_constraintTop_toTopOf="@id/ivRating"
+            app:layout_constraintBottom_toBottomOf="@id/ivRating"
+            tools:text="5.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

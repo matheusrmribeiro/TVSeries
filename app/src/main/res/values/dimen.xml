@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="small_spacing">4dp</dimen>
+    <dimen name="medium_spacing">10dp</dimen>
+    <dimen name="big_spacing">40dp</dimen>
+    <dimen name="icon_small">24dp</dimen>
+    <dimen name="icon_medium">36dp</dimen>
+
+    <!-- UIHome -->
+    <dimen name="home_item_size">160dp</dimen>
+    <dimen name="home_item_elevation">10dp</dimen>
+    <dimen name="home_item_corner_radius">10dp</dimen>
+
+    <!-- UIShowDetails -->
+    <dimen name="show_details_wallpaper_size">200dp</dimen>
+    <dimen name="show_details_corner_radius">20dp</dimen>
+    <dimen name="show_details_spacing">24dp</dimen>
+    <dimen name="show_details_episodes_height">115dp</dimen>
+    <dimen name="show_details_episodes_item_height">100dp</dimen>
+    <dimen name="show_details_episodes_item_width">120dp</dimen>
+
+
+</resources>

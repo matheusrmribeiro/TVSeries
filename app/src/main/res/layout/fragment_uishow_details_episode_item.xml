@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/show_details_episodes_item_width"
+    android:layout_height="@dimen/show_details_episodes_item_height"
+    android:layout_margin="@dimen/medium_spacing"
+    app:cardElevation="@dimen/home_item_elevation"
+    app:cardCornerRadius="@dimen/home_item_corner_radius"
+    app:cardPreventCornerOverlap="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivWallpaper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/home_wallpaper"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:scaleType="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:background="@android:color/darker_gray"/>
+
+        <ImageView
+            android:id="@+id/ivShadow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/home_wallpaper"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:alpha="0.5"
+            android:background="@color/alpha_shadow"/>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/white"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/medium_spacing"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvSubTitle"
+            app:layout_constraintEnd_toEndOf="@id/tvSubTitle"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/tvSubTitle"
+            style="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_spacing"
+            android:layout_marginTop="@dimen/medium_spacing"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivWallpaper"
+            tools:text="Sub-Title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

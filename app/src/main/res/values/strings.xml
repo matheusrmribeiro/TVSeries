@@ -1,0 +1,18 @@
+<resources>
+    <!--  General -->
+    <string name="app_name">TV Series</string>
+    <string name="back">Voltar</string>
+
+    <!-- UIHome -->
+    <string name="home_wallpaper">Imagem da série</string>
+    <string name="home_search">Buscar</string>
+    <string name="home_item_rating">Avaliação média</string>
+
+    <!-- UIShowDetails -->
+    <string name="show_details_schedule">PROGRAMAÇÃO</string>
+    <string name="show_details_episodes">EPSÓDIOS</string>
+    <string name="show_details_summary">RESUMO</string>
+    <string name="show_details_season">%sª Temporada</string>
+    <string name="show_details_episode">EP %s</string>
+
+</resources>

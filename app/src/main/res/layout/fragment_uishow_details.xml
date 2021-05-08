@@ -1,0 +1,187 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvWallpaper"
+            style="@style/ShowDetailsWallpaperCard"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/show_details_wallpaper_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShowDetailsWallpaperCard">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivWallpaper"
+                    style="@style/ShowDetailsWallpaperImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/home_wallpaper"
+                    android:scaleType="center"
+                    app:shapeAppearance="@style/ShowDetailsWallpaperImage"
+                    tools:background="@android:color/darker_gray" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivShadow"
+                    style="@style/ShowDetailsWallpaperImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.5"
+                    android:background="@color/alpha_shadow"
+                    android:contentDescription="@string/home_wallpaper"
+                    android:scaleType="center"
+                    app:shapeAppearance="@style/ShowDetailsWallpaperImage" />
+
+                <ImageView
+                    android:id="@+id/ivBack"
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:layout_margin="@dimen/show_details_spacing"
+                    android:contentDescription="@string/back"
+                    android:elevation="10dp"
+                    android:src="@drawable/ic_arrow_back"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/medium_spacing"
+                    android:layout_marginEnd="@dimen/medium_spacing"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/ivBack"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivBack"
+                    app:layout_constraintTop_toTopOf="@id/ivBack"
+                    tools:text="Title" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvGenres"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/show_details_spacing"
+            android:layout_marginBottom="@dimen/show_details_spacing"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:ellipsize="end"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/cvWallpaper"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Sub-Title" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:fillViewport="true"
+            app:layout_constraintTop_toBottomOf="@id/cvWallpaper"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Schedule -->
+                <TextView
+                    android:id="@+id/tvScheduleLabel"
+                    style="@style/Label"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/show_details_spacing"
+                    android:layout_marginTop="@dimen/show_details_spacing"
+                    android:text="@string/show_details_schedule"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvSchedule"
+                    style="@style/Content"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/show_details_spacing"
+                    android:layout_marginTop="@dimen/medium_spacing"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvScheduleLabel"
+                    tools:text="Thursday" />
+
+                <!-- Episodes -->
+                <TextView
+                    android:id="@+id/tvEpisodeLabel"
+                    style="@style/Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/show_details_spacing"
+                    android:layout_marginTop="@dimen/show_details_spacing"
+                    android:text="@string/show_details_episodes"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSchedule" />
+
+                <Spinner
+                    android:id="@+id/spSeason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/medium_spacing"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvEpisodeLabel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintStart_toEndOf="@+id/tvEpisodeLabel"
+                    app:layout_constraintTop_toTopOf="@+id/tvEpisodeLabel" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvEpisodes"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/show_details_episodes_height"
+                    android:layout_marginStart="@dimen/show_details_spacing"
+                    android:layout_marginTop="@dimen/medium_spacing"
+                    android:layout_marginEnd="@dimen/show_details_spacing"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvEpisodeLabel" />
+
+                <!-- Summary -->
+                <TextView
+                    android:id="@+id/tvSummaryLabel"
+                    style="@style/Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/show_details_spacing"
+                    android:layout_marginTop="@dimen/show_details_spacing"
+                    android:text="@string/show_details_summary"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rvEpisodes" />
+
+                <TextView
+                    android:id="@+id/tvSummary"
+                    style="@style/Content"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/show_details_spacing"
+                    android:layout_marginTop="@dimen/medium_spacing"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSummaryLabel"
+                    tools:text="Text here" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
