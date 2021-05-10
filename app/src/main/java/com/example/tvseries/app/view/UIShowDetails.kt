@@ -3,31 +3,23 @@ package com.example.tvseries.app.view
 import android.graphics.Rect
 import android.os.Bundle
 import android.text.Html
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tvseries.R
 import com.example.tvseries.app.adapters.EpisodesAdapter
-import com.example.tvseries.app.adapters.ShowsAdapter
 import com.example.tvseries.app.viewmodel.VMShowDetails
 import com.example.tvseries.databinding.FragmentUishowDetailsBinding
 import com.example.tvseries.domain.model.Episode
 import com.example.tvseries.domain.model.Show
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+
 
 private const val ARG_SHOW = "show"
 
@@ -68,6 +60,7 @@ class UIShowDetails : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         vmDetails = ViewModelProvider(this).get(VMShowDetails::class.java)
         binding.lifecycleOwner = this
 
@@ -84,13 +77,17 @@ class UIShowDetails : Fragment() {
         val schedule = "${show.schedule.time} on ${show.schedule.days.joinToString(separator = ", ")}"
         binding.tvSchedule.text = schedule
         binding.spSeason.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 if (vmDetails.seasons.value?.isNotEmpty() == true)
-                    vmDetails.selectSeason(position+1)
+                    vmDetails.selectSeason(position + 1)
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
         binding.tvSummary.text = Html.fromHtml(show.summary).toString()
 
@@ -133,8 +130,8 @@ class UIShowDetails : Fragment() {
             layout.orientation = LinearLayoutManager.HORIZONTAL
             binding.rvEpisodes.layoutManager = layout
             binding.rvEpisodes.adapter = EpisodesAdapter(it) { episode ->
-//                val action = UIHomeDirections.actionUIHomeToUIShowDetails(episode)
-//                findNavController().navigate(action)
+                val action = UIShowDetailsDirections.actionUIShowDetailsToUIEpisodeDetails(episode)
+                findNavController().navigate(action)
             }
             binding.rvEpisodes.addItemDecoration(
                 object : RecyclerView.ItemDecoration() {

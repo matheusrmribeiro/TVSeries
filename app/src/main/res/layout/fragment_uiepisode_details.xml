@@ -75,7 +75,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
-            android:id="@+id/tvGenres"
+            android:id="@+id/tvSubtitle"
             style="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
@@ -100,21 +100,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <!-- Schedule -->
+                <!-- Season -->
                 <TextView
-                    android:id="@+id/tvScheduleLabel"
+                    android:id="@+id/tvSeasonLabel"
                     style="@style/Label"
                     android:layout_width="@dimen/zero"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/show_details_spacing"
                     android:layout_marginTop="@dimen/show_details_spacing"
-                    android:text="@string/show_details_schedule"
+                    android:text="@string/episode_details_season_label"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tvSchedule"
+                    android:id="@+id/tvSeason"
                     style="@style/Content"
                     android:layout_width="@dimen/zero"
                     android:layout_height="wrap_content"
@@ -122,43 +122,8 @@
                     android:layout_marginTop="@dimen/medium_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvScheduleLabel"
-                    tools:text="Thursday" />
-
-                <!-- Episodes -->
-                <TextView
-                    android:id="@+id/tvEpisodeLabel"
-                    style="@style/Label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/show_details_spacing"
-                    android:layout_marginTop="@dimen/show_details_spacing"
-                    android:text="@string/show_details_episodes"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvSchedule" />
-
-                <Spinner
-                    android:id="@+id/spSeason"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/medium_spacing"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvEpisodeLabel"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1"
-                    app:layout_constraintStart_toEndOf="@+id/tvEpisodeLabel"
-                    app:layout_constraintTop_toTopOf="@+id/tvEpisodeLabel" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvEpisodes"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/show_details_episodes_height"
-                    android:layout_marginStart="@dimen/show_details_spacing"
-                    android:layout_marginTop="@dimen/medium_spacing"
-                    android:layout_marginEnd="@dimen/show_details_spacing"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvEpisodeLabel" />
+                    app:layout_constraintTop_toBottomOf="@id/tvSeasonLabel"
+                    tools:text="1ª Temporada" />
 
                 <!-- Summary -->
                 <TextView
@@ -170,7 +135,7 @@
                     android:layout_marginTop="@dimen/show_details_spacing"
                     android:text="@string/show_details_summary"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rvEpisodes" />
+                    app:layout_constraintTop_toBottomOf="@id/tvSeason" />
 
                 <TextView
                     android:id="@+id/tvSummary"

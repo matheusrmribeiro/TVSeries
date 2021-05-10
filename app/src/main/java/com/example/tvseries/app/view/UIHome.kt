@@ -18,11 +18,13 @@ import com.example.tvseries.app.adapters.ShowsAdapter
 import com.example.tvseries.app.viewmodel.VMHome
 import com.example.tvseries.databinding.FragmentUihomeBinding
 
+private const val ARG_QUERY = "query"
 
 class UIHome : Fragment() {
 
     lateinit var binding: FragmentUihomeBinding
     lateinit var vmHome: VMHome
+    var shouldClearItems: Boolean = true
 
     companion object {
         fun newInstance() = UIHome()
@@ -47,6 +49,7 @@ class UIHome : Fragment() {
 
     private val adapter = ShowsAdapter(
         { show ->
+            shouldClearItems = false
             val action = UIHomeDirections.actionUIHomeToUIShowDetails(show)
             findNavController().navigate(action)
         },
@@ -86,15 +89,20 @@ class UIHome : Fragment() {
 
         searchView.addOnAttachStateChangeListener(object : OnAttachStateChangeListener {
             override fun onViewDetachedFromWindow(arg0: View) {
-                adapter.clearItems()
-                vmHome.all(requireContext())
-                vmHome.setSearchMode(false)
+                if (shouldClearItems) {
+                    adapter.clearItems()
+                    vmHome.setSearchMode(false)
+                    vmHome.all(requireContext())
+                }
             }
 
             override fun onViewAttachedToWindow(arg0: View) {
-                vmHome.setSearchMode(true)
-                searchView.setQuery("", false)
-                vmHome.clearShows()
+                if (!vmHome.isSearchMode()) {
+                    vmHome.setSearchMode(true)
+                    searchView.setQuery("", false)
+                    vmHome.clearShows()
+                } else
+                    shouldClearItems = true
             }
         })
 

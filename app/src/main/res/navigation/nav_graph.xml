@@ -22,5 +22,17 @@
         <argument
             android:name="show"
             app:argType="com.example.tvseries.domain.model.Show" />
+        <action
+            android:id="@+id/action_UIShowDetails_to_UIEpisodeDetails"
+            app:destination="@id/UIEpisodeDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/UIEpisodeDetails"
+        android:name="com.example.tvseries.app.view.UIEpisodeDetails"
+        android:label="UIEpisodeDetails"
+        tools:layout="@layout/fragment_uiepisode_details" >
+        <argument
+            android:name="episode"
+            app:argType="com.example.tvseries.domain.model.Episode" />
     </fragment>
 </navigation>

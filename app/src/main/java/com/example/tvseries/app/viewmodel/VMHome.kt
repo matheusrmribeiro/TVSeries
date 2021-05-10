@@ -20,13 +20,14 @@ class VMHome : ViewModel() {
 
     val shows = MutableLiveData(listOf<Show>())
     var pageId: Int = 0
-    private val isSearchMode = MutableLiveData(false)
+    private val _isSearchMode = MutableLiveData(false)
 
     val showSearchImage: LiveData<Boolean> = Transformations.map(shows) {
-        it.isEmpty() && (isSearchMode.value == true)
+        it.isEmpty() && (_isSearchMode.value == true)
     }
 
-    fun setSearchMode(value: Boolean) = isSearchMode.postValue(value)
+    fun setSearchMode(value: Boolean) = _isSearchMode.postValue(value)
+    fun isSearchMode() = _isSearchMode.value == true
 
     fun clearShows() {
         shows.postValue(listOf())

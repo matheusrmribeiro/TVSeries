@@ -15,4 +15,10 @@
     <string name="show_details_season">%sª Temporada</string>
     <string name="show_details_episode">EP %s</string>
 
+    <!-- UIEpisodeDetails -->
+    <string name="episode_details_season_label">TEMPORADA</string>
+    <string name="episode_details_summary">RESUMO</string>
+    <string name="episode_details_season">%sª Temporada</string>
+    <string name="episode_details_episode">EP %s</string>
+
 </resources>
