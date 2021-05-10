@@ -9,13 +9,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiClient {
     private lateinit var apiService: ApiService
 
-    fun getApiService(context: Context, withInterceptor: Boolean = true): ApiService {
+    fun getApiService(context: Context, withInterceptor: Boolean = false): ApiService {
         if (!::apiService.isInitialized) {
             val retrofit = if (withInterceptor)
                 Retrofit.Builder()
                 .baseUrl(Consts.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-//                .client(okHttpClient(context))
+                .client(okHttpClient(context))
                 .build()
             else
                 Retrofit.Builder()

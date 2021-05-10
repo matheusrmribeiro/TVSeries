@@ -10,12 +10,6 @@ import retrofit2.http.*
 
 interface ApiService {
 
-//    @POST(Consts.LOGIN_URL)
-//    fun login(@Body request: LoginRequest): Call<LoginResponse>
-
-//    @GET(Consts.SHOWS)
-//    fun getShows(@Query("name") name: String): Call<ShowsResponse>
-
     @GET(Consts.SHOWS)
     fun getShows(@Query("page") page: Int): Call<List<Show>>
 
@@ -27,4 +21,5 @@ interface ApiService {
 
     @GET(Consts.EPISODES)
     fun getEpisodes(@Path("id") id: Long): Call<List<Episode>>
+
 }

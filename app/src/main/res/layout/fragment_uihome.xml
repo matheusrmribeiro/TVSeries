@@ -43,6 +43,7 @@ xmlns:tools="http://schemas.android.com/tools">
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ImageView
+        android:id="@+id/ivSearch"
         android:layout_width="@dimen/zero"
         android:layout_height="@dimen/zero"
         android:layout_margin="@dimen/big_spacing"

@@ -3,6 +3,7 @@ package com.example.tvseries.app.viewmodel
 import android.content.Context
 import android.util.Log
 import android.view.animation.Transformation
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
@@ -18,11 +19,10 @@ import kotlin.math.round
 class VMHome : ViewModel() {
 
     val shows = MutableLiveData(listOf<Show>())
-
     var pageId: Int = 0
-
     private val isSearchMode = MutableLiveData(false)
-    val showSearchImage = Transformations.map(shows) {
+
+    val showSearchImage: LiveData<Boolean> = Transformations.map(shows) {
         it.isEmpty() && (isSearchMode.value == true)
     }
 
