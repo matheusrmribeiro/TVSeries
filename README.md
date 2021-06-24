@@ -2,7 +2,7 @@
  TV series show
 
 # About
- The project uses the API TVmaze to show a wide collection of TV shows and some useful informations
+ The project uses the TVmaze API to show a wide collection of TV shows and some useful informations
  
 # Into the project
  What the project uses:
