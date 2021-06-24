@@ -11,11 +11,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TVSeries">
         <activity android:name=".MainActivity">
+            <nav-graph android:value="@navigation/nav_graph" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!-- DeepLink -->
+<!--            <intent-filter android:label="@string/deep_link">-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
+<!--                &lt;!&ndash; Accepts URIs that begin with "http://www.example.com/gizmos” &ndash;&gt;-->
+<!--                <data android:scheme="http"-->
+<!--                    android:host="api.tvshow"-->
+<!--                    android:pathPrefix="/details" />-->
+<!--                &lt;!&ndash; note that the leading "/" is required for pathPrefix&ndash;&gt;-->
+<!--            </intent-filter>-->
+
         </activity>
     </application>
 

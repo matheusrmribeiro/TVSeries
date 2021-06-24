@@ -22,4 +22,14 @@ interface ApiService {
     @GET(Consts.EPISODES)
     fun getEpisodes(@Path("id") id: Long): Call<List<Episode>>
 
+
+    @GET(Consts.SHOW)
+    fun getShow(@Path("id") id: Long): Call<Show>
+
+    @GET(Consts.EPISODE)
+    fun getEpisode(
+        @Path("id") id: Long,
+        @Query("season") season: Long,
+        @Query("number") number: Long
+    ): Call<Episode>
 }

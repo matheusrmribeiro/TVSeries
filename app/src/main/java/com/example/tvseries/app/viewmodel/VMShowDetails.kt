@@ -50,10 +50,16 @@ class VMShowDetails : ViewModel() {
 
                 override fun onResponse(call: Call<List<Episode>>, response: Response<List<Episode>>) {
                     if (response.code() == 200) {
-                        episodes.postValue(response.body())
-                    } else {
+                        val result = response.body()?.let{
+                            it.map { episode ->
+                                episode.apply {
+                                    showId = id
+                                }
+                            }
+                        }
+                        episodes.postValue(result)
+                    } else
                         episodes.postValue(listOf())
-                    }
                 }
             })
     }

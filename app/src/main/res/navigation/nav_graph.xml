@@ -13,26 +13,37 @@
         <action
             android:id="@+id/action_UIHome_to_UIShowDetails"
             app:destination="@id/UIShowDetails" />
+        <action
+            android:id="@+id/action_UIHome_to_UIEpisodeDetails"
+            app:destination="@id/UIEpisodeDetails" />
     </fragment>
     <fragment
         android:id="@+id/UIShowDetails"
         android:name="com.example.tvseries.app.view.UIShowDetails"
         android:label="fragment_uishow_details"
-        tools:layout="@layout/fragment_uishow_details" >
+        tools:layout="@layout/fragment_uishow_details">
         <argument
             android:name="show"
             app:argType="com.example.tvseries.domain.model.Show" />
         <action
             android:id="@+id/action_UIShowDetails_to_UIEpisodeDetails"
             app:destination="@id/UIEpisodeDetails" />
+        <deepLink
+            android:id="@+id/deepLinkShow"
+            app:action="ACTION_VIEW"
+            app:uri="https://api.tvmaze.com/show/detail/{id}" />
     </fragment>
     <fragment
         android:id="@+id/UIEpisodeDetails"
         android:name="com.example.tvseries.app.view.UIEpisodeDetails"
         android:label="UIEpisodeDetails"
-        tools:layout="@layout/fragment_uiepisode_details" >
+        tools:layout="@layout/fragment_uiepisode_details">
         <argument
             android:name="episode"
             app:argType="com.example.tvseries.domain.model.Episode" />
+        <deepLink
+            android:id="@+id/deepLinkEpisode"
+            app:action="ACTION_VIEW"
+            app:uri="https://api.tvmaze.com/show/episode/{id}" />
     </fragment>
 </navigation>

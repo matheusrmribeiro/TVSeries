@@ -14,8 +14,17 @@
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="500" />
-                            <option name="y" value="12" />
+                            <option name="y" value="54" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="deepLinkEpisode">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -26,11 +35,16 @@
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="y" value="54" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_UIHome_to_UIEpisodeDetails">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_UIHome_to_UIShowDetails">
                               <value>
                                 <LayoutPositions />
@@ -53,6 +67,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_UIShowDetails_to_UIEpisodeDetails">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="deepLinkShow">
                               <value>
                                 <LayoutPositions />
                               </value>

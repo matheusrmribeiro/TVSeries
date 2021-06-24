@@ -6,7 +6,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-
+import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    private lateinit var controller: NavController // don't forget to initialize
+    private lateinit var controller: NavController
 
     private val listener = NavController.OnDestinationChangedListener { controller, destination, arguments ->
         val w: Window = window
@@ -38,4 +38,10 @@ class MainActivity : AppCompatActivity() {
         controller.removeOnDestinationChangedListener(listener)
         super.onPause()
     }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        controller.handleDeepLink(intent)
+    }
+
 }

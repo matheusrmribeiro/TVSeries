@@ -6,6 +6,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Episode (
+    @SerializedName("showId")
+    var showId: Long,
     @SerializedName("id")
     val id: Long,
     @SerializedName("number")

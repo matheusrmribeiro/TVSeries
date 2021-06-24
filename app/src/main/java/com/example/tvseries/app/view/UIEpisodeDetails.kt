@@ -1,32 +1,37 @@
 package com.example.tvseries.app.view
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tvseries.R
-import com.example.tvseries.app.adapters.EpisodesAdapter
-import com.example.tvseries.app.viewmodel.VMShowDetails
+import com.example.tvseries.app.utils.Base64Utils
+import com.example.tvseries.app.utils.Share
+import com.example.tvseries.data.ApiClient
+import com.example.tvseries.data.Consts
 import com.example.tvseries.databinding.FragmentUiepisodeDetailsBinding
 import com.example.tvseries.domain.model.Episode
 import com.example.tvseries.domain.model.Show
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 private const val ARG_EPISODE = "episode"
+private const val ARG_ID = "id"
+private const val ARG_SEASON = "season"
+private const val ARG_NUMBER = "number"
 
 class UIEpisodeDetails : Fragment() {
     lateinit var binding: FragmentUiepisodeDetailsBinding
-    private lateinit var episode: Episode
+    private val episode = MutableLiveData<Episode?>(null)
 
     companion object {
         fun newInstance(show: Show) =
@@ -40,8 +45,31 @@ class UIEpisodeDetails : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            episode = it.getParcelable(ARG_EPISODE)!!
+            if (it.containsKey(ARG_ID)) {
+                val data = Base64Utils.toJson(it.getString(ARG_ID)!!)
+                getEpisode(
+                    data.getString(ARG_ID).toLong(),
+                    data.getString(ARG_SEASON).toLong(),
+                    data.getString(ARG_NUMBER).toLong(),
+                )
+            } else
+                episode.postValue(it.getParcelable(ARG_EPISODE)!!)
         }
+    }
+
+    private fun getEpisode(id: Long, seasonId: Long, numberId: Long) {
+        val apiClient = ApiClient()
+        apiClient.getApiService(requireContext()).getEpisode(id, seasonId, numberId)
+            .enqueue(object : Callback<Episode> {
+                override fun onFailure(call: Call<Episode>, t: Throwable) {
+                    Log.e("SearchError", "error: $t")
+                }
+
+                override fun onResponse(call: Call<Episode>, response: Response<Episode>) {
+                    if (response.code() == 200)
+                        episode.postValue(response.body()!!)
+                }
+            })
     }
 
     override fun onCreateView(
@@ -61,18 +89,37 @@ class UIEpisodeDetails : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
+
         binding.ivBack.setOnClickListener {
             findNavController().navigateUp()
         }
 
-        Glide.with(view.context)
-            .load(episode.image?.original)
-            .into(binding.ivWallpaper)
+        binding.ivSharing.setOnClickListener {
+            val json = JSONObject()
+            json.put(ARG_ID, episode.value!!.showId)
+            json.put(ARG_SEASON, episode.value!!.season)
+            json.put(ARG_NUMBER, episode.value!!.number)
+            val data = Base64Utils.toBase64(json.toString())
+            Share.shareText(
+                requireContext(),
+                String.format(Consts.SHARE_EPISODE, data),
+                resources.getString(R.string.episode_details_share)
+            )
+        }
 
-        binding.tvTitle.text = episode.name
-        binding.tvSubtitle.text = String.format(resources.getString(R.string.episode_details_episode), episode.number.toString())
-        binding.tvSeason.text = String.format(resources.getString(R.string.episode_details_season), episode.season.toString())
-        binding.tvSummary.text = Html.fromHtml(episode.summary).toString()
+        episode.observe(viewLifecycleOwner) { episode ->
+            if (episode != null) {
+                Glide.with(view.context)
+                    .load(episode.image?.original)
+                    .into(binding.ivWallpaper)
+
+                binding.tvTitle.text = episode.name
+                binding.tvSubtitle.text = String.format(resources.getString(R.string.episode_details_episode), episode.number.toString())
+                binding.tvSeason.text = String.format(resources.getString(R.string.episode_details_season), episode.season.toString())
+                binding.tvSummary.text = Html.fromHtml(episode.summary).toString()
+            }
+        }
+
     }
 
 }
