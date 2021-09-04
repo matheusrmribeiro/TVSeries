@@ -17,6 +17,11 @@
 * Follow some material desing rules
 * Cool design
 
+# Screenshots
+
+<img src="prints/home.png?raw=true" width="24%" /> <img src="prints/search.png?raw=true" width="24%" /> <img src="prints/show.png?raw=true" width="24%" /> <img src="prints/episode.png?raw=true" width="24%" />
+
+
 # Deep Link
  You can use the deep-link to open a shared link to open directly the show or an especific episode.
  
