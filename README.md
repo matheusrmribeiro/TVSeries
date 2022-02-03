@@ -13,7 +13,7 @@
 * Jetpack Navigation
 * Binding
 * ViewModel
-* LiveDatas
+* LiveData
 * Follow some material desing rules
 * Cool design
 
